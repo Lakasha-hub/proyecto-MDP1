@@ -43,22 +43,38 @@
         static int GenerarNumRandom(int min, int max) { return random.Next(min, max + 1); }
         static void Informar(IColeccionable cl)
         {
-            Console.WriteLine(cl.Cuantos());
-            Console.WriteLine(((Numero)cl.Minimo()).GetValor());
-            Console.WriteLine(((Numero)cl.Maximo()).GetValor());
+            Console.WriteLine($"Cantidad de elementos: {cl.Cuantos()}");
+            Console.WriteLine($"Minimo: {cl.Minimo().ToString()}");
+            Console.WriteLine($"Maximo: {cl.Maximo().ToString()}");
 
-            Console.WriteLine("Ingrese un número para ver si esta en la colección");
-            IComparable num = new Numero(int.Parse(Console.ReadLine()));
-            Console.WriteLine(cl.Contiene(num) 
-                ? "El elemento leído está en la colección"
-                : "El elemento leído no está en la colección");
+            Console.WriteLine("Ingrese un elemento para ver si esta en la colección");
+            int opt = int.Parse(Console.ReadLine());
+
+            IComparable newCM;
+            if(cl.Minimo() is Alumno)
+            {
+                newCM = new Alumno("", opt, 0, 0);
+            }
+            else if (cl.Minimo() is Numero)
+            {
+                newCM = new Numero(opt);
+            }
+            else
+            {
+                Console.WriteLine("Tipo de dato no identificado");
+                return;
+            }
+
+                Console.WriteLine(cl.Contiene(newCM)
+                    ? "El elemento leído está en la colección"
+                    : "El elemento leído no está en la colección");
         }
 
         static void LlenarAlumnos(IColeccionable cl)
         {
             for(int i = 0; i < 20; i++)
             {
-                IComparable nuevoAlumno = new Alumno(GenerarNombreRandom(), GenerarNumRandom(1111111, 99999999),
+                IComparable nuevoAlumno = new Alumno(GenerarNombreRandom(), GenerarNumRandom(11111111, 99999999),
                     GenerarNumRandom(10000, 99999), GenerarNumRandom(1, 10));
                 cl.Agregar(nuevoAlumno);
             }
