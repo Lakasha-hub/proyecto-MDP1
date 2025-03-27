@@ -24,7 +24,7 @@
             //Informar(cola);
             //Informar(multiple);
 
-            // Ejercicio 14
+            // Ejercicio 14 y 15
             Pila pila = new();
             Cola cola = new();
             ColeccionMultiple multiple = new(pila, cola);
@@ -50,10 +50,15 @@
             Console.WriteLine("Ingrese un elemento para ver si esta en la colección");
             int opt = int.Parse(Console.ReadLine());
 
+            // Solucion Temporal para Ej 14 y 15
             IComparable newCM;
             if(cl.Minimo() is Alumno)
             {
-                newCM = new Alumno("", opt, 0, 0);
+                //Evaluacion por DNI: (Nota: Para probar se deben comentar o eliminar los metodos override de Alumno)
+                // newCM = new Alumno("", opt, 0, 0);
+
+                //Evaluacion por Promedio
+                newCM = new Alumno("", 0, 0, opt);
             }
             else if (cl.Minimo() is Numero)
             {
