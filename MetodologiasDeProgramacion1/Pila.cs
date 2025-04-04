@@ -27,7 +27,8 @@ namespace MetodologiasDeProgramacion1
 
         public int Cuantos() { return this.lista.Count; }
 
-        public IComparable Minimo() {
+        public IComparable Minimo()
+        {
             IComparable min = this.lista[0];
             for (int i = 1; i < Cuantos(); i++)
             {
@@ -39,7 +40,8 @@ namespace MetodologiasDeProgramacion1
             return min;
         }
 
-        public IComparable Maximo() {
+        public IComparable Maximo()
+        {
             IComparable max = this.lista[0];
             for (int i = 1; i < Cuantos(); i++)
             {
@@ -53,7 +55,8 @@ namespace MetodologiasDeProgramacion1
 
         public void Agregar(IComparable cm) => Apilar(cm);
 
-        public bool Contiene(IComparable cm) {
+        public bool Contiene(IComparable cm)
+        {
             for (int i = 0; i < Cuantos(); i++)
             {
                 if (cm.SosIgual(this.lista[i]))

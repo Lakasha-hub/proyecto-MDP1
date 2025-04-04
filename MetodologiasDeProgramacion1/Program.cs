@@ -1,7 +1,8 @@
 ﻿namespace MetodologiasDeProgramacion1
 {
     using System;
-    class Program {
+    class Program
+    {
 
         private static Random random = new Random();
         static void Main(string[] args)
@@ -52,7 +53,7 @@
 
             // Solucion Temporal para Ej 14 y 15
             IComparable newCM;
-            if(cl.Minimo() is Alumno)
+            if (cl.Minimo() is Alumno)
             {
                 //Evaluacion por DNI: (Nota: Para probar se deben comentar o eliminar los metodos override de Alumno)
                 // newCM = new Alumno("", opt, 0, 0);
@@ -70,14 +71,14 @@
                 return;
             }
 
-                Console.WriteLine(cl.Contiene(newCM)
-                    ? "El elemento leído está en la colección"
-                    : "El elemento leído no está en la colección");
+            Console.WriteLine(cl.Contiene(newCM)
+                ? "El elemento leído está en la colección"
+                : "El elemento leído no está en la colección");
         }
 
         static void LlenarAlumnos(IColeccionable cl)
         {
-            for(int i = 0; i < 20; i++)
+            for (int i = 0; i < 20; i++)
             {
                 IComparable nuevoAlumno = new Alumno(GenerarNombreRandom(), GenerarNumRandom(11111111, 99999999),
                     GenerarNumRandom(10000, 99999), GenerarNumRandom(1, 10));

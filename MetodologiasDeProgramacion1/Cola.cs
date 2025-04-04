@@ -29,12 +29,12 @@ namespace MetodologiasDeProgramacion1
         public IComparable Minimo()
         {
             IComparable min = this.lista[0];
-            for(int i = 1; i < Cuantos(); i++)
+            for (int i = 1; i < Cuantos(); i++)
             {
                 if (this.lista[i].SosMenor(min))
                 {
                     min = this.lista[i];
-                } 
+                }
             }
             return min;
         }
@@ -56,7 +56,7 @@ namespace MetodologiasDeProgramacion1
 
         public bool Contiene(IComparable cm)
         {
-            for(int i = 0; i < Cuantos(); i++)
+            for (int i = 0; i < Cuantos(); i++)
             {
                 if (cm.SosIgual(this.lista[i]))
                 {
