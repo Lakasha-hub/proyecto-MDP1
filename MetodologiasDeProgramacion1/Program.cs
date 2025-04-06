@@ -6,31 +6,7 @@
         private static Random random = new Random();
         static void Main(string[] args)
         {
-            // Ejercicio 7
-            //Pila pila = new();
-            //Cola cola = new();
-            //Llenar(pila);
-            //Llenar(cola);
-            //Informar(pila);
-            //Informar(cola);
-
-            // Ejercicio 9
-            //Pila pila = new();
-            //Cola cola = new();
-            //ColeccionMultiple multiple = new(pila, cola);
-            //Llenar(pila);
-            //Llenar(cola);
-            //Informar(pila);
-            //Informar(cola);
-            //Informar(multiple);
-
-            // Ejercicio 14
-            Pila pila = new();
-            Cola cola = new();
-            ColeccionMultiple multiple = new(pila, cola);
-            LlenarAlumnos(pila);
-            LlenarAlumnos(cola);
-            Informar(multiple);
+            Console.WriteLine("hola");
         }
         static void Llenar(IColeccionable cl)
         {
