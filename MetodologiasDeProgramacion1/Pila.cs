@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MetodologiasDeProgramacion1
 {
-    internal class Pila : IColeccionable
+    internal class Pila : IColeccionable, Iterable
     {
         protected List<IComparable> lista;
 
@@ -63,5 +63,7 @@ namespace MetodologiasDeProgramacion1
             }
             return false;
         }
+
+        public IteradorListas CrearIterador() { return new IteradorListas(this.lista); }
     }
 }
