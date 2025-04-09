@@ -17,8 +17,8 @@ namespace MetodologiasDeProgramacion1
         }
         public string GetNombre() { return this.nombre; }
         public int GetDni() { return this.dni; }
-        public virtual bool SosIgual(IComparable cm) { throw new NotImplementedException(); }
-        public virtual bool SosMenor(IComparable cm) { throw new NotImplementedException(); }
-        public virtual bool SosMayor(IComparable cm) { throw new NotImplementedException(); }
+        public abstract bool SosIgual(IComparable cm);
+        public abstract bool SosMenor(IComparable cm);
+        public abstract bool SosMayor(IComparable cm);
     }
 }
