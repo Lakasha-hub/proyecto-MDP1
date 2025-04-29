@@ -11,6 +11,7 @@ namespace MetodologiasDeProgramacion1
             {
                 "numero" => new FabricaDeNumeros(),
                 "alumno" => new FabricaDeAlumnos(),
+                "alumnoEstudioso" => new FabricaDeAlumnosEstudiosos(),
                 "profesor" => new FabricaDeProfesores(),
                 _ => CrearFabricaPorDefecto(),
             };

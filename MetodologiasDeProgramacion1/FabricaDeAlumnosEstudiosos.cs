@@ -6,34 +6,20 @@ using System.Threading.Tasks;
 
 namespace MetodologiasDeProgramacion1
 {
-    internal class FabricaDeAlumnos : FabricaDeComparables
+    internal class FabricaDeAlumnosEstudiosos : FabricaDeAlumnos
     {
-        public FabricaDeAlumnos() { }
+        public FabricaDeAlumnosEstudiosos() { }
+
         public override IComparable CrearAleatorio()
         {
             GeneradorDeDatosAleatorios gen = new();
-            return new Alumno(gen.StringAleatorio(10),
+            return new AlumnoMuyEstudioso(gen.StringAleatorio(10),
                 gen.NumeroAleatorio(99999999),
                 gen.NumeroAleatorio(99999),
                 gen.NumeroAleatorio(10),
                CrearEstrategiaPorDefecto());
         }
 
-        protected IEstrategiaComparacion CrearEstrategiaPorDefecto() { return new PorPromedio(); }
-
-        protected IEstrategiaComparacion CrearEstrategiaAleatoria()
-        {
-            GeneradorDeDatosAleatorios gen = new();
-            int opcionAleatoria = gen.NumeroAleatorio(3);
-            IEstrategiaComparacion estrategia = opcionAleatoria switch
-            {
-                0 => new PorDNI(),
-                1 => new PorNombre(),
-                2 => new PorLegajo(),
-                3 => new PorPromedio(),
-            };
-            return estrategia;
-        }
         public override IComparable CrearPorTeclado()
         {
             LectorDeDatos lector = new();
@@ -61,7 +47,7 @@ namespace MetodologiasDeProgramacion1
                 4 => new PorPromedio(),
                 _ => CrearEstrategiaPorDefecto(),
             };
-            return new Alumno(nombre, dni, legajo, promedio, estrategia);
+            return new AlumnoMuyEstudioso(nombre, dni, legajo, promedio, estrategia);
         }
     }
 }
