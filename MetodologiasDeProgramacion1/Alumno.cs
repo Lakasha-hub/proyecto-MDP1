@@ -11,17 +11,22 @@ namespace MetodologiasDeProgramacion1
         protected int legajo;
         protected int promedio;
         protected IEstrategiaComparacion estrategia;
-
+        protected int calificacion;
         public Alumno(string n, int d, int l, int p, IEstrategiaComparacion e) : base(n, d)
         {
             this.legajo = l;
             this.promedio = p;
             this.estrategia = e;
+            this.calificacion = 0;
         }
 
         public int GetLegajo() { return this.legajo; }
 
         public int GetPromedio() { return this.promedio; }
+
+        public int GetCalificacion() { return this.calificacion; }
+
+        public void SetCalificacion(int cl) { this.calificacion = cl; }
 
         public string GetNombreEstrategia() { return estrategia.GetType().Name; }
 
@@ -57,5 +62,14 @@ namespace MetodologiasDeProgramacion1
                 Distraerse();
             }
         }
+
+        // TO DO: par pregunta
+        public virtual int ResponderPregunta(int pregunta)
+        {
+            GeneradorDeDatosAleatorios gen = new();
+            return gen.NumeroAleatorio(2) + 1;
+        }
+
+        public string MostrarCalificacion() { return $"{GetNombre()}\t{GetCalificacion()}"; }
     }
 }

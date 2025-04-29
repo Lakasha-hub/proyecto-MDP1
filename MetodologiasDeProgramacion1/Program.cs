@@ -1,16 +1,22 @@
 ﻿namespace MetodologiasDeProgramacion1
 {
     using System;
+    using MetodologíasDeProgramaciónI;
+
     class Program {
         static void Main(string[] args)
         {
-            Profesor prof = (Profesor)FabricaDeComparables.CrearAleatorio("profesor");
-            for (int i = 0; i < 20; i++)
+            Teacher teacher = new();
+            for (int i = 0; i < 10; i++)
             {
-                IObservador ob = (IObservador)FabricaDeComparables.CrearAleatorio("alumno");
-                prof.AgregarObservador(ob);
+                IComparable alumno = FabricaDeComparables.CrearAleatorio("alumno");
+                teacher.goToClass(new AlumnoAdapter((Alumno)alumno));
+
+                IComparable estudioso = FabricaDeComparables.CrearAleatorio("alumnoEstudioso");
+                teacher.goToClass(new AlumnoAdapter((AlumnoMuyEstudioso)estudioso));
             }
-            DictadoDeClase(prof);
+
+            teacher.teachingAClass();
 
             Console.WriteLine("Presione cualquier tecla para continuar...");
             Console.ReadKey(true);
