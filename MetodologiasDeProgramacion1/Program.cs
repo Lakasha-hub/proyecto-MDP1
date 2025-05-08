@@ -6,14 +6,26 @@
     class Program {
         static void Main(string[] args)
         {
-            Teacher teacher = new();
-            for (int i = 0; i < 10; i++)
-            {
-                IComparable alumno = FabricaDeComparables.CrearAleatorio("alumno");
-                teacher.goToClass(new AlumnoAdapter((Alumno)alumno));
+            // Ejercicio 4
+            //Teacher teacher = new();
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    IComparable alumnoEstudioso = FabricaDeComparables.CrearAleatorio("alumnoEstudioso");
+            //    teacher.goToClass(new AlumnoAdapter((IAlumno)alumnoEstudioso));
 
-                IComparable estudioso = FabricaDeComparables.CrearAleatorio("alumnoEstudioso");
-                teacher.goToClass(new AlumnoAdapter((AlumnoMuyEstudioso)estudioso));
+            //    IComparable alumno = FabricaDeComparables.CrearAleatorio("alumno");
+            //    teacher.goToClass(new AlumnoAdapter((IAlumno)alumno));
+
+            //}
+
+            //teacher.teachingAClass();
+
+            // Ejercicio 7
+            Teacher teacher = new();
+            for (int i = 0; i < 20; i++)
+            {
+                IComparable student = FabricaDeComparables.CrearAleatorio("students");
+                teacher.goToClass(new AlumnoAdapter((IAlumno)student));
             }
 
             teacher.teachingAClass();
