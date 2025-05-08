@@ -5,9 +5,9 @@ namespace MetodologiasDeProgramacion1
 {
     internal class AlumnoAdapter : Student
     {
-        Alumno alumno;
+        IAlumno alumno;
 
-        public AlumnoAdapter(Alumno a) { this.alumno = a; }
+        public AlumnoAdapter(IAlumno a) { this.alumno = a; }
 
         public string getName() { return this.alumno.GetNombre(); }
 

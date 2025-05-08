@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MetodologiasDeProgramacion1
 {
-    internal class Alumno : Persona, IObservador
+    internal class Alumno : Persona, IAlumno
     {
         protected int legajo;
         protected int promedio;
@@ -71,5 +71,7 @@ namespace MetodologiasDeProgramacion1
         }
 
         public string MostrarCalificacion() { return $"{GetNombre()}\t{GetCalificacion()}"; }
+
+        public Alumno GetAlumno() { return this; }
     }
 }
