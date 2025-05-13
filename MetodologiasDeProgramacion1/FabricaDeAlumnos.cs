@@ -12,7 +12,7 @@ namespace MetodologiasDeProgramacion1
         public override IComparable CrearAleatorio()
         {
             GeneradorDeDatosAleatorios gen = new();
-            return new Alumno(gen.StringAleatorio(10),
+            return new AlumnoProxy(gen.StringAleatorio(10),
                 gen.NumeroAleatorio(99999999),
                 gen.NumeroAleatorio(99999),
                 gen.NumeroAleatorio(10),
@@ -61,7 +61,7 @@ namespace MetodologiasDeProgramacion1
                 4 => new PorPromedio(),
                 _ => CrearEstrategiaPorDefecto(),
             };
-            return new Alumno(nombre, dni, legajo, promedio, estrategia);
+            return new AlumnoProxy(nombre, dni, legajo, promedio, estrategia);
         }
     }
 }

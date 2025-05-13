@@ -6,29 +6,24 @@
     class Program {
         static void Main(string[] args)
         {
-            // Ejercicio 4
+            // Ejercicio 2
             //Teacher teacher = new();
-            //for (int i = 0; i < 10; i++)
+            //for (int i = 0; i < 20; i++)
             //{
-            //    IComparable alumnoEstudioso = FabricaDeComparables.CrearAleatorio("alumnoEstudioso");
-            //    teacher.goToClass(new AlumnoAdapter((IAlumno)alumnoEstudioso));
-
-            //    IComparable alumno = FabricaDeComparables.CrearAleatorio("alumno");
-            //    teacher.goToClass(new AlumnoAdapter((IAlumno)alumno));
-
+            //    IComparable student = FabricaDeComparables.CrearAleatorio("students");
+            //    teacher.goToClass(new AlumnoAdapter((IAlumno)student));
             //}
 
             //teacher.teachingAClass();
 
-            // Ejercicio 7
-            Teacher teacher = new();
-            for (int i = 0; i < 20; i++)
-            {
-                IComparable student = FabricaDeComparables.CrearAleatorio("students");
-                teacher.goToClass(new AlumnoAdapter((IAlumno)student));
-            }
-
-            teacher.teachingAClass();
+            // Ejercicio 10
+            Pila pila = new();
+            Aula aula = new();
+            pila.SetOrdenInicio(new OrdenInicio(aula));
+            pila.SetOrdenLlegaAlumno(new OrdenLlegaAlumno(aula));
+            pila.SetOrdenAulaLlena(new OrdenAulaLlena(aula));
+            Llenar(pila, "alumno");
+            Llenar(pila, "alumnoEstudioso");
 
             Console.WriteLine("Presione cualquier tecla para continuar...");
             Console.ReadKey(true);

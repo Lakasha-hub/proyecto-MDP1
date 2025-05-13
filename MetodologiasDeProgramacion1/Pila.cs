@@ -7,16 +7,28 @@ using System.Threading.Tasks;
 
 namespace MetodologiasDeProgramacion1
 {
-    internal class Pila : IColeccionable, Iterable
+    internal class Pila : IColeccionable, Iterable, IOrdenable
     {
         protected List<IComparable> lista;
-
+        private IOrdenEnAula1 ordenInicio;
+        private IOrdenEnAula1 ordenAulaLlena;
+        private IOrdenEnAula2 ordenNuevoAlumno;
         public Pila()
         {
             this.lista = [];
         }
 
-        private void Apilar(IComparable cm) => lista.Add(cm);
+        private void Apilar(IComparable cm)
+        {
+            if (Cuantos() == 0)
+                ordenInicio.Ejecutar();
+
+            lista.Add(cm);
+            ordenNuevoAlumno.Ejecutar(cm);
+
+            if (Cuantos() == 40)
+                ordenAulaLlena.Ejecutar();
+        }
 
         public IComparable Desapilar()
         {
@@ -65,5 +77,9 @@ namespace MetodologiasDeProgramacion1
         }
 
         public IteradorListas CrearIterador() { return new IteradorListas(this.lista); }
+
+        public void SetOrdenInicio(IOrdenEnAula1 orden) { this.ordenInicio = orden; }
+        public void SetOrdenLlegaAlumno(IOrdenEnAula2 orden) { this.ordenNuevoAlumno = orden; }
+        public void SetOrdenAulaLlena(IOrdenEnAula1 orden) { this.ordenAulaLlena = orden; }
     }
 }
