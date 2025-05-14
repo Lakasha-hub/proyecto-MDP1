@@ -30,7 +30,7 @@ namespace MetodologiasDeProgramacion1
         public bool SosIgual(IComparable cm) { return this.alumno.SosIgual(cm); }
         public bool SosMenor(IComparable cm) { return this.alumno.SosMenor(cm); }
         public bool SosMayor(IComparable cm) { return this.alumno.SosMayor(cm); }
-        public Alumno GetAlumno() { return this.alumno.GetAlumno(); }
+        //public Alumno GetAlumno() { return this.alumno.GetAlumno(); }
         public abstract string MostrarCalificacion();
     }
 }

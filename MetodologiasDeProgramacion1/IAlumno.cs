@@ -20,6 +20,5 @@ namespace MetodologiasDeProgramacion1
         string GetNombreEstrategia();
         void SetCalificacion(int cl);
         string MostrarCalificacion();
-        Alumno GetAlumno();
     }
 }

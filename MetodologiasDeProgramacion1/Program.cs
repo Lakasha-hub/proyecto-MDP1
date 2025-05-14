@@ -22,8 +22,8 @@
             pila.SetOrdenInicio(new OrdenInicio(aula));
             pila.SetOrdenLlegaAlumno(new OrdenLlegaAlumno(aula));
             pila.SetOrdenAulaLlena(new OrdenAulaLlena(aula));
-            Llenar(pila, "alumno");
-            Llenar(pila, "alumnoEstudioso");
+            Llenar(pila, "alumnoCompuesto");
+            Llenar(pila, "alumnoCompuesto");
 
             Console.WriteLine("Presione cualquier tecla para continuar...");
             Console.ReadKey(true);

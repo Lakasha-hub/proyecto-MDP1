@@ -14,6 +14,7 @@ namespace MetodologiasDeProgramacion1
                 "alumnoEstudioso" => new FabricaDeAlumnosEstudiosos(),
                 "profesor" => new FabricaDeProfesores(),
                 "students" => new StudentsFactory(),
+                "alumnoCompuesto" => new FabricaDeAlumnosCompuestos(),
                 _ => CrearFabricaPorDefecto(),
             };
             return fabrica.CrearAleatorio();

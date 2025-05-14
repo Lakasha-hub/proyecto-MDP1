@@ -9,8 +9,8 @@ namespace MetodologiasDeProgramacion1
 {
     internal class PorDNI : IEstrategiaComparacion
     {
-        public bool Igual(IComparable cm, IComparable cm2) { return ((IAlumno)cm).GetAlumno().GetDni() == ((IAlumno)cm2).GetAlumno().GetDni(); }
-        public bool Menor(IComparable cm, IComparable cm2) { return ((IAlumno)cm).GetAlumno().GetDni() < ((IAlumno)cm2).GetAlumno().GetDni(); }
-        public bool Mayor(IComparable cm, IComparable cm2) { return ((IAlumno)cm).GetAlumno().GetDni() > ((IAlumno)cm2).GetAlumno().GetDni(); }
+        public bool Igual(IComparable cm, IComparable cm2) { return ((Persona)cm).GetDni() == ((Persona)cm2).GetDni(); }
+        public bool Menor(IComparable cm, IComparable cm2) { return ((Persona)cm).GetDni() < ((Persona)cm2).GetDni(); }
+        public bool Mayor(IComparable cm, IComparable cm2) { return ((Persona)cm).GetDni() > ((Persona)cm2).GetDni(); }
     }
 }

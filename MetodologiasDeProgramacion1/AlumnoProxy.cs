@@ -65,12 +65,12 @@ namespace MetodologiasDeProgramacion1
             }
         }
         public string MostrarCalificacion() { return $"{GetNombre()}\t{GetCalificacion()}"; }
-        public Alumno GetAlumno()
-        {
-            if (this.alumnoReal == null)
-                this.alumnoReal = CrearAlumnoReal();
-            return this.alumnoReal;
-        }
+        //public Alumno GetAlumno()
+        //{
+        //    if (this.alumnoReal == null)
+        //        this.alumnoReal = CrearAlumnoReal();
+        //    return this.alumnoReal;
+        //}
         public void SetEstrategia(IEstrategiaComparacion es)
         {
             if (this.alumnoReal != null)
