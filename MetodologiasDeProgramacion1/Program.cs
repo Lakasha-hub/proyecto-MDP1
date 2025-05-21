@@ -6,24 +6,21 @@
     class Program {
         static void Main(string[] args)
         {
-            // Ejercicio 2
-            //Teacher teacher = new();
-            //for (int i = 0; i < 20; i++)
-            //{
-            //    IComparable student = FabricaDeComparables.CrearAleatorio("students");
-            //    teacher.goToClass(new AlumnoAdapter((IAlumno)student));
-            //}
+            // Blackjack
+            JuegoDeCarta blackjack = new Blackjack();
+            IComparable per1 = FabricaDeComparables.CrearAleatorio("profesor");
+            IComparable per2 = FabricaDeComparables.CrearAleatorio("profesor");
 
-            //teacher.teachingAClass();
+            Persona ganador = blackjack.Jugar((Persona)per1, (Persona)per2);
+            Console.WriteLine($"El ganador de la partida es {ganador.GetNombre()}");
 
-            // Ejercicio 10
-            Pila pila = new();
-            Aula aula = new();
-            pila.SetOrdenInicio(new OrdenInicio(aula));
-            pila.SetOrdenLlegaAlumno(new OrdenLlegaAlumno(aula));
-            pila.SetOrdenAulaLlena(new OrdenAulaLlena(aula));
-            Llenar(pila, "alumnoCompuesto");
-            Llenar(pila, "alumnoCompuesto");
+            // Guerra
+            //JuegoDeCarta guerra = new Guerra();
+            //IComparable per1 = FabricaDeComparables.CrearAleatorio("profesor");
+            //IComparable per2 = FabricaDeComparables.CrearAleatorio("profesor");
+
+            //Persona ganador = guerra.Jugar((Persona)per1, (Persona)per2);
+            //Console.WriteLine($"El ganador de la partida es {ganador.GetNombre()}");
 
             Console.WriteLine("Presione cualquier tecla para continuar...");
             Console.ReadKey(true);
