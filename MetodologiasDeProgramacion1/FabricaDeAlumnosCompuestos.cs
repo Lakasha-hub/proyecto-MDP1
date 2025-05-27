@@ -11,14 +11,30 @@ namespace MetodologiasDeProgramacion1
         public FabricaDeAlumnosCompuestos() { }
         public override IComparable CrearAleatorio()
         {
-            GeneradorDeDatosAleatorios gen = new();
+            CrearCadenaDeResponsabilidad();
             AlumnoCompuesto alumnoComp = new();
             for (int i = 0; i < 5; i++)
             {
-                alumnoComp.AgregarHijo(new AlumnoProxy(gen.StringAleatorio(10),
-                gen.NumeroAleatorio(99999999),
-                gen.NumeroAleatorio(99999),
-                gen.NumeroAleatorio(10),
+                alumnoComp.AgregarHijo(new AlumnoProxy(manejador.StringAleatorio(10),
+                manejador.NumeroAleatorio(99999999),
+                manejador.NumeroAleatorio(99999),
+                manejador.NumeroAleatorio(10),
+               CrearEstrategiaPorDefecto()));
+            }
+
+            return alumnoComp;
+        }
+
+        public override IComparable CrearDesdeArchivo()
+        {
+            CrearCadenaDeResponsabilidad();
+            AlumnoCompuesto alumnoComp = new();
+            for (int i = 0; i < 5; i++)
+            {
+                alumnoComp.AgregarHijo(new AlumnoProxy(manejador.StringDesdeArchivo(10),
+                (int)Math.Round(manejador.NumeroDesdeArchivo(10)),
+                (int)Math.Round(manejador.NumeroDesdeArchivo(99999)),
+                (int)Math.Round(manejador.NumeroDesdeArchivo(10)),
                CrearEstrategiaPorDefecto()));
             }
 

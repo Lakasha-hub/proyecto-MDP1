@@ -2,12 +2,15 @@
 
 namespace MetodologiasDeProgramacion1
 {
-    internal class GeneradorDeDatosAleatorios
+    internal class GeneradorDeDatosAleatorios : ProveedorDeDatos
     {
         private static Random random = new Random();
         private const string CARACTERES = "abcdefghijklmnopqrstuvwxyz";
-        public int NumeroAleatorio(int max) { return random.Next(0, max + 1); }
-        public string StringAleatorio(int cant)
+        private static GeneradorDeDatosAleatorios? generador = null;
+
+        private GeneradorDeDatosAleatorios(ProveedorDeDatos? p) : base(p) { }
+        public override int NumeroAleatorio(int max) { return random.Next(0, max + 1); }
+        public override string StringAleatorio(int cant)
         {
             char[] stringAleatorio = new char[cant];
             for(int i = 0; i < cant; i++)
@@ -16,6 +19,13 @@ namespace MetodologiasDeProgramacion1
             }
 
             return new string(stringAleatorio);
+        }
+
+        public static GeneradorDeDatosAleatorios GetInstancia(ProveedorDeDatos p)
+        {
+            if (generador == null)
+                return new GeneradorDeDatosAleatorios(p);
+            return generador;
         }
     }
 }

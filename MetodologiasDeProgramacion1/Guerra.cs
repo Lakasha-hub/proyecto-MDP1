@@ -9,11 +9,11 @@ namespace MetodologiasDeProgramacion1
     internal class Guerra : JuegoDeCarta
     {
         private List<int> puntaje;
-        private GeneradorDeDatosAleatorios gen;
+        private ProveedorDeDatos manejador;
         public Guerra()
         {
             this.puntaje = new List<int> { 0, 0 };
-            this.gen = new GeneradorDeDatosAleatorios();
+            this.manejador = GeneradorDeDatosAleatorios.GetInstancia(null);
         }
 
         public override void Mezclar() { Console.WriteLine("Mezclando la baraja española"); }
@@ -39,7 +39,7 @@ namespace MetodologiasDeProgramacion1
 
         private int GenerarCarta()
         {
-            int carta = this.gen.NumeroAleatorio(12);
+            int carta = this.manejador.NumeroAleatorio(12);
             return carta == 0 ? 1 : carta;
         }
 

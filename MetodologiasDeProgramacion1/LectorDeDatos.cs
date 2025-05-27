@@ -6,10 +6,20 @@ using System.Threading.Tasks;
 
 namespace MetodologiasDeProgramacion1
 {
-    internal class LectorDeDatos
+    internal class LectorDeDatos : ProveedorDeDatos
     {
-        public int NumeroPorTeclado() { return int.Parse(Console.ReadLine()); }
+        private static LectorDeDatos? lector = null;
+        public LectorDeDatos(ProveedorDeDatos? p) : base(p){ }
 
-        public string StringPorTeclado() { return Console.ReadLine(); }
+        public override int NumeroPorTeclado() { return int.Parse(Console.ReadLine()); }
+
+        public override string StringPorTeclado() { return Console.ReadLine(); }
+
+        public static LectorDeDatos GetInstancia(ProveedorDeDatos p)
+        {
+            if (lector == null)
+                return new LectorDeDatos(p);
+            return lector;
+        } 
     }
 }

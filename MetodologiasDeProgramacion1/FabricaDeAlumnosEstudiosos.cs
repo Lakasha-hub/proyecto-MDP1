@@ -12,32 +12,32 @@ namespace MetodologiasDeProgramacion1
 
         public override IComparable CrearAleatorio()
         {
-            GeneradorDeDatosAleatorios gen = new();
-            return new AlumnoMuyEstudiosoProxy(gen.StringAleatorio(10),
-                gen.NumeroAleatorio(99999999),
-                gen.NumeroAleatorio(99999),
-                gen.NumeroAleatorio(10),
+            CrearCadenaDeResponsabilidad();
+            return new AlumnoMuyEstudiosoProxy(manejador.StringAleatorio(10),
+                manejador.NumeroAleatorio(99999999),
+                manejador.NumeroAleatorio(99999),
+                manejador.NumeroAleatorio(10),
                CrearEstrategiaPorDefecto());
         }
 
         public override IComparable CrearPorTeclado()
         {
-            LectorDeDatos lector = new();
+            CrearCadenaDeResponsabilidad();
             Console.WriteLine("Ingresa un nombre: ");
-            string nombre = lector.StringPorTeclado();
+            string nombre = manejador.StringPorTeclado();
             Console.WriteLine("Ingresa un DNI: ");
-            int dni = lector.NumeroPorTeclado();
+            int dni = manejador.NumeroPorTeclado();
             Console.WriteLine("Ingresa un legajo: ");
-            int legajo = lector.NumeroPorTeclado();
+            int legajo = manejador.NumeroPorTeclado();
             Console.WriteLine("Ingresa un promedio: ");
-            int promedio = lector.NumeroPorTeclado();
+            int promedio = manejador.NumeroPorTeclado();
 
             Console.WriteLine("Ingresa un numero por el tipo de estrategia para el alumno: ");
             Console.WriteLine("1) Por DNI.");
             Console.WriteLine("2) Por Nombre.");
             Console.WriteLine("3) Por Legajo.");
             Console.WriteLine("4) Por Promedio.");
-            int estrategiaOpcion = lector.NumeroPorTeclado();
+            int estrategiaOpcion = manejador.NumeroPorTeclado();
 
             IEstrategiaComparacion estrategia = estrategiaOpcion switch
             {
@@ -48,6 +48,16 @@ namespace MetodologiasDeProgramacion1
                 _ => CrearEstrategiaPorDefecto(),
             };
             return new AlumnoMuyEstudiosoProxy(nombre, dni, legajo, promedio, estrategia);
+        }
+
+        public override IComparable CrearDesdeArchivo()
+        {
+            CrearCadenaDeResponsabilidad();
+            return new AlumnoMuyEstudiosoProxy(manejador.StringDesdeArchivo(10),
+                (int)Math.Round(manejador.NumeroDesdeArchivo(10)),
+                (int)Math.Round(manejador.NumeroDesdeArchivo(99999)),
+                (int)Math.Round(manejador.NumeroDesdeArchivo(10)),
+               CrearEstrategiaPorDefecto());
         }
     }
 }

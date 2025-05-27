@@ -38,8 +38,8 @@ namespace MetodologiasDeProgramacion1
 
         public void Distraerse()
         {
-            GeneradorDeDatosAleatorios gen = new();
-            string msj = gen.NumeroAleatorio(2) switch
+            ProveedorDeDatos manejador = GeneradorDeDatosAleatorios.GetInstancia(null);
+            string msj = manejador.NumeroAleatorio(2) switch
             {
                 0 => "Mirando el celular",
                 1 => "Dibujando en el margen de la carpeta",
@@ -66,12 +66,10 @@ namespace MetodologiasDeProgramacion1
         // TO DO: par pregunta
         public virtual int ResponderPregunta(int pregunta)
         {
-            GeneradorDeDatosAleatorios gen = new();
-            return gen.NumeroAleatorio(2) + 1;
+            ProveedorDeDatos manejador = GeneradorDeDatosAleatorios.GetInstancia(null);
+            return manejador.NumeroAleatorio(2) + 1;
         }
 
         public string MostrarCalificacion() { return $"{GetNombre()}\t{GetCalificacion()}"; }
-
-        //public Alumno GetAlumno() { return this; }
     }
 }

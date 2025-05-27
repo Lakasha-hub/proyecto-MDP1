@@ -6,21 +6,26 @@
     class Program {
         static void Main(string[] args)
         {
-            // Blackjack
-            JuegoDeCarta blackjack = new Blackjack();
-            IComparable per1 = FabricaDeComparables.CrearAleatorio("profesor");
-            IComparable per2 = FabricaDeComparables.CrearAleatorio("profesor");
+            Teacher teacher = new();
+            for (int i = 0; i < 5; i++)
+            {
+                IComparable alumnoAleatorio = FabricaDeComparables.CrearAleatorio("alumno");
+                teacher.goToClass(new AlumnoAdapter((IAlumno)alumnoAleatorio));
+            }
 
-            Persona ganador = blackjack.Jugar((Persona)per1, (Persona)per2);
-            Console.WriteLine($"El ganador de la partida es {ganador.GetNombre()}");
+            for(int i = 0; i < 2; i++)
+            {
+                IComparable alumnoEstudioso = FabricaDeComparables.CrearPorTeclado("alumnoEstudioso");
+                teacher.goToClass(new AlumnoAdapter((IAlumno)alumnoEstudioso));
+            }
 
-            // Guerra
-            //JuegoDeCarta guerra = new Guerra();
-            //IComparable per1 = FabricaDeComparables.CrearAleatorio("profesor");
-            //IComparable per2 = FabricaDeComparables.CrearAleatorio("profesor");
+            for (int i = 0; i < 5; i++)
+            {
+                IComparable alumnoCompuesto = FabricaDeComparables.CrearDesdeArchivo("alumnoCompuesto");
+                teacher.goToClass(new AlumnoAdapter((IAlumno)alumnoCompuesto));
+            }
 
-            //Persona ganador = guerra.Jugar((Persona)per1, (Persona)per2);
-            //Console.WriteLine($"El ganador de la partida es {ganador.GetNombre()}");
+            teacher.teachingAClass();
 
             Console.WriteLine("Presione cualquier tecla para continuar...");
             Console.ReadKey(true);

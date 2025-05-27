@@ -34,7 +34,7 @@ namespace MetodologiasDeProgramacion1
         public int GetCalificacion() { return this.calificacion; }
         public void SetCalificacion(int cl)
         {
-            if(this.alumnoReal != null)
+            if (this.alumnoReal != null)
                 this.alumnoReal.SetCalificacion(cl);
             this.calificacion = cl;
         }
@@ -43,8 +43,8 @@ namespace MetodologiasDeProgramacion1
         public void PrestarAtencion() { Console.WriteLine("Prestando atencion"); }
         public void Distraerse()
         {
-            GeneradorDeDatosAleatorios gen = new();
-            string msj = gen.NumeroAleatorio(2) switch
+            ProveedorDeDatos manejador = GeneradorDeDatosAleatorios.GetInstancia(null);
+            string msj = manejador.NumeroAleatorio(2) switch
             {
                 0 => "Mirando el celular",
                 1 => "Dibujando en el margen de la carpeta",
@@ -65,12 +65,6 @@ namespace MetodologiasDeProgramacion1
             }
         }
         public string MostrarCalificacion() { return $"{GetNombre()}\t{GetCalificacion()}"; }
-        //public Alumno GetAlumno()
-        //{
-        //    if (this.alumnoReal == null)
-        //        this.alumnoReal = CrearAlumnoReal();
-        //    return this.alumnoReal;
-        //}
         public void SetEstrategia(IEstrategiaComparacion es)
         {
             if (this.alumnoReal != null)

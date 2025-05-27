@@ -9,13 +9,12 @@ namespace MetodologiasDeProgramacion1
     internal class Blackjack : JuegoDeCarta
     {
         private List<int> puntaje;
-        private LectorDeDatos lector;
-        private GeneradorDeDatosAleatorios gen;
+        private ProveedorDeDatos manejador;
+
         public Blackjack()
         {
             this.puntaje = [];
-            this.lector = new LectorDeDatos();
-            this.gen = new GeneradorDeDatosAleatorios();
+            this.manejador = LectorDeDatos.GetInstancia(GeneradorDeDatosAleatorios.GetInstancia(null));
         }
 
         public override void Mezclar() { Console.WriteLine("Mezclando baraja inglesa"); }
@@ -42,7 +41,7 @@ namespace MetodologiasDeProgramacion1
             Console.WriteLine($"El jugador {jugador.GetNombre()} comienza con {cartaVisible}");
 
             Console.WriteLine($"{jugador.GetNombre()}, ¿Quieres otra carta? 1) Sí  2) No");
-            int opcion = this.lector.NumeroPorTeclado();
+            int opcion = this.manejador.NumeroPorTeclado();
             while(opcion != 2)
             {
                 int nuevaCarta = GenerarCartaVisible();
@@ -50,7 +49,7 @@ namespace MetodologiasDeProgramacion1
                 Console.WriteLine($"Nueva carta: {nuevaCarta} -> Total actual: {total}");
 
                 Console.WriteLine($"{jugador.GetNombre()}, ¿Quieres otra carta? 1) Sí  2) No");
-                opcion = this.lector.NumeroPorTeclado();
+                opcion = this.manejador.NumeroPorTeclado();
             }
 
             Console.WriteLine($"{jugador.GetNombre()} se planta");
@@ -60,14 +59,14 @@ namespace MetodologiasDeProgramacion1
         }
         private int GenerarCartaVisible()
         {
-            int primerCarta = this.gen.NumeroAleatorio(10);
+            int primerCarta = this.manejador.NumeroAleatorio(10);
             if (primerCarta == 0)
                 primerCarta++;
 
             if (primerCarta == 1)
             {
                 Console.WriteLine("Te salio un AS, elige su valor 1) Uno, 2) Diez");
-                int opcion = this.lector.NumeroPorTeclado();
+                int opcion = this.manejador.NumeroPorTeclado();
                 if (opcion == 2)
                     return 10;
                 return 1;
@@ -78,7 +77,7 @@ namespace MetodologiasDeProgramacion1
 
         private int GenerarCartaOculta()
         {
-            int cartaOculta = this.gen.NumeroAleatorio(10);
+            int cartaOculta = this.manejador.NumeroAleatorio(10);
             return cartaOculta == 0 ? 1 : cartaOculta;
         }
 
